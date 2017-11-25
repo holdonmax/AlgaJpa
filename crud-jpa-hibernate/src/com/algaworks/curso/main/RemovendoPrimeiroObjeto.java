@@ -13,7 +13,7 @@ public class RemovendoPrimeiroObjeto {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemploPU");
 		EntityManager em = emf.createEntityManager();
 
-		Cliente cliente = em.find(Cliente.class, 6L);
+		Cliente cliente = em.find(Cliente.class, (9L));
 
 		// sintaxe acima usa a classe enidade e a posiçao
 		// depois vai deletar a mesma

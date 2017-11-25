@@ -6,30 +6,24 @@ import javax.persistence.Persistence;
 
 import com.algaworks.curso.model.Cliente;
 
-public class SalvaItens {
+public class AtualizarObjeto {
 
 	public static void main(String[] args) {
-
-		// imoprtar sempre o hibernate
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemploPU");
 		EntityManager em = emf.createEntityManager();
-
-		Cliente cliente = new Cliente();
-		cliente.setNome("Douglas Gonsalves Carvalho");
-		cliente.setIdade(24);
-		cliente.setProfissao("afeminado");
-		cliente.setSexo("M");
-
-		// iniciar transaçao para fazer inserções no banco
+		
+		//preciso de um objeto gerenciado
+		Cliente cliente = em.find(Cliente.class, 2L);
 		em.getTransaction().begin();
-		
-		em.persist(cliente);
-		
+		cliente.setNome("Erick Alves dos Santos ");
+		cliente.setIdade(28);
+		cliente.setProfissao("Programador Java Sr.");
+		cliente.setSexo("M"	);
 		em.getTransaction().commit();
-
-		System.out.println("Cliente salvo com sucesso");
-		em.close();
+		
+		System.out.println("Cliente Alterado com sucesso");
+		
+		
 	}
-
 }
